@@ -21,7 +21,7 @@ function NavbarTop() {
                 <div className="float-right color">
 
                     {
-                        useSelector(state => state.usuarioLogado) > 0 ?
+                        useSelector(state => state.user.usuarioLogado) > 0 ?
                             <>
                                 <MostrarUser/>
                             </> 

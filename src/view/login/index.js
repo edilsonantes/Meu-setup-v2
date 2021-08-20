@@ -21,7 +21,7 @@ function Login() {
             <NavbarTop />
             <NavbarMenu />
             {
-                useSelector(state => state.usuarioLogado) > 0 ? <Redirect to="/" /> :null
+                useSelector(state => state.user.usuarioLogado) > 0 ? <Redirect to="/" /> :null
             }
 
             <div className="container mt-3">
