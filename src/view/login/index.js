@@ -1,29 +1,19 @@
 import React, {useState} from 'react';
 import './login.css';
-import firebase from '../../config/firebase';
-import 'firebase/auth';
 import {Link, Redirect} from 'react-router-dom';
 import NavbarTop from '../../components/navbarTop';
 import NavbarMenu from '../../components/navbarMenu';
 import Footer from '../../components/footer';
 import {useDispatch, useSelector} from 'react-redux';
+import {fazerLogin} from '../../actions';
 
 function Login() {
 
     const [email, setEmail] = useState();
     const [senha, setSenha] = useState();
     const dispatch = useDispatch();
-    
-    function autenticar(){
-        
-        firebase.auth().signInWithEmailAndPassword(email, senha).then(resultado => {
-            dispatch({type: 'LOGIN', usuarioEmail: email})
-            
-        })
-        .catch(erro => {
-            alert(erro);
-        })
-    }
+
+  
 
     return(
         <div>
@@ -50,7 +40,7 @@ function Login() {
                                 <input onChange={(e) => setSenha(e.target.value)} type="password" name="senha" className="campo mb-3" id="senha"/>
                             </div>
                             <div className="mx-5 mt-5 text-center">
-                                <input className="btn btn-warning" value="Login" type="button" id="login" onClick={autenticar}/>
+                                <input className="btn btn-warning" value="Login" type="button" id="login" onClick={() => fazerLogin(email, senha, dispatch)}/>
                             </div>
                         </div>
                     </div>

@@ -1,7 +1,6 @@
 import React from 'react';
 import './mostrarUser.css';
 import {Link} from 'react-router-dom';
-import imagem from '../../img/page/MEUSETUP.png';
 import {useDispatch, useSelector} from 'react-redux';
 
 function MostrarUser(){
