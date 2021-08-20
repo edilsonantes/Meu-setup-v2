@@ -1,0 +1,12 @@
+no cadastro:
+    servidor de autenticação cria o usuario
+    depois de criado usar o UID como código pra registrar aquele usuário no banco.
+
+relação dos componentes:
+    criar uma coleção pra cada tipo de componentes
+    onde o admin vai ser capaz de gerenciar todos.
+
+no login:
+    depois do servidor de autenticação logar o usuario
+    tem que buscar o UID dele no banco pra verificar se é admin ou user
+    pra determinar quais areas da plataforma ele tem acesso.

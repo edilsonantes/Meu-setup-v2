@@ -1,5 +1,7 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {Provider} from 'react-redux';
+import {store} from './store';
 
 //Paginas
 import Home from './view/home';
@@ -10,15 +12,17 @@ import Ajuda from './view/ajuda';
 
 function App() {
   return (
-    <Router>
-      <Switch>
-        <Route exact path = '/' component = {Home} />
-        <Route exact path = '/login' component = {Login} />
-        <Route exact path = '/cadastrar' component = {Cadastrar} />
-        <Route exact path = '/setup' component = {Setup} />
-        <Route exact path = '/ajuda' component = {Ajuda} />
-      </Switch>
-    </Router>
+    <Provider store = {store}>
+      <Router>
+        <Switch>
+          <Route exact path = '/' component = {Home} />
+          <Route exact path = '/login' component = {Login} />
+          <Route exact path = '/cadastrar' component = {Cadastrar} />
+          <Route exact path = '/setup' component = {Setup} />
+          <Route exact path = '/ajuda' component = {Ajuda} />
+        </Switch>
+      </Router>
+    </Provider>
   );
 }
 

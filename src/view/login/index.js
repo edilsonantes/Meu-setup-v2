@@ -2,31 +2,37 @@ import React, {useState} from 'react';
 import './login.css';
 import firebase from '../../config/firebase';
 import 'firebase/auth';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import NavbarTop from '../../components/navbarTop';
 import NavbarMenu from '../../components/navbarMenu';
 import Footer from '../../components/footer';
+import {useDispatch, useSelector} from 'react-redux';
 
 function Login() {
 
     const [email, setEmail] = useState();
     const [senha, setSenha] = useState();
+    const dispatch = useDispatch();
     
     function autenticar(){
         
         firebase.auth().signInWithEmailAndPassword(email, senha).then(resultado => {
-            alert('CONECTADO');
+            dispatch({type: 'LOGIN', usuarioEmail: email})
+            
         })
         .catch(erro => {
             alert(erro);
         })
     }
-    
+
     return(
         <div>
             
             <NavbarTop />
             <NavbarMenu />
+            {
+                useSelector(state => state.usuarioLogado) > 0 ? <Redirect to="/" /> :null
+            }
 
             <div className="container mt-3">
                 <form className="" action="" method="POST" id="form_cadastro">

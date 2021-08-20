@@ -11,6 +11,7 @@ function Setup() {
             
             <NavbarTop />
             <NavbarMenu />
+
             <div className="container mt-3">
                 <div className="row justify-content-center">
                     <div id="conteudo" className="col-md-12 text-center">
@@ -159,6 +160,7 @@ function Setup() {
                 </div>
                 
             </div>
+            
             <Footer />
             
         </div>
