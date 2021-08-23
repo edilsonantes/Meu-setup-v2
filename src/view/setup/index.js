@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import './setup.css';
 import NavbarTop from '../../components/navbarTop';
 import NavbarMenu from '../../components/navbarMenu';
@@ -19,16 +19,7 @@ function Setup() {
                         <div className="row justify-content-center">
                             <div id="renderComponentes" className="col-md-8 col-sm-6">
                                 <div className="row">                            
-                                    <ComponentCard />
-                                    <ComponentCard />
-                                    <ComponentCard />
-                                    <ComponentCard />
-                                    <ComponentCard />
-                                    <ComponentCard />
-                                    <ComponentCard />
-                                    <ComponentCard />
-                                    <ComponentCard />
-                                                            
+                                    <ComponentCard />    
                                 </div>
                             </div>
                             <div className="col-md-4 justify-content-center col-sm-6">

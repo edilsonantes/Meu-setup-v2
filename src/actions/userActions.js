@@ -1,6 +1,5 @@
 import firebase from '../config/firebase';
 import 'firebase/auth';
-import {useSelector} from 'react-redux';
 
 export const LOGIN = 'LOGIN';
 const userLogin = (usuarioEmail,usuarioTipo,usuarioNome) =>({
