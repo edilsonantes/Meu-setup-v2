@@ -39,6 +39,9 @@ function Login() {
                                 <label for="senha" className="form-label">Senha:</label><br/>
                                 <input onChange={(e) => setSenha(e.target.value)} type="password" name="senha" className="campo mb-3" id="senha"/>
                             </div>
+                            <div className="mx-5 text-center">
+                                <Link className="text-white"to="/recuperarsenha">Recuperar senha</Link>
+                            </div>
                             <div className="mx-5 mt-5 text-center">
                                 <input className="btn btn-warning" value="Login" type="button" id="login" onClick={() => fazerLogin(email, senha, dispatch)}/>
                             </div>

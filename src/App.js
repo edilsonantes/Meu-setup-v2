@@ -9,6 +9,7 @@ import Login from './view/login';
 import Cadastrar from './view/cadastrar';
 import Setup from './view/setup';
 import Ajuda from './view/ajuda';
+import Recuperarsenha from './view/recuperarsenha';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route exact path = '/cadastrar' component = {Cadastrar} />
           <Route exact path = '/setup' component = {Setup} />
           <Route exact path = '/ajuda' component = {Ajuda} />
+          <Route exact path = '/recuperarsenha' component = {Recuperarsenha} />
         </Switch>
       </Router>
     </Provider>
