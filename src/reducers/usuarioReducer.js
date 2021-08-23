@@ -3,15 +3,17 @@ import {LOGIN, LOGOUT} from '../actions/index';
 
 const INITIAL_STATE = {
     usuarioEmail: '',
-    usuarioLoagdo: ''
+    usuarioTipo: '',
+    usuarioLogado: '',
+    usuarioNome: '',
 };
 
 function usuarioReducer(state = INITIAL_STATE, action) {
     switch (action.type) {
         case LOGIN:
-            return {...state, usuarioLogado: 1, usuarioEmail: action.usuarioEmail}
+            return {...state, usuarioLogado: 1, usuarioEmail: action.usuarioEmail, usuarioTipo: action.usuarioTipo, usuarioNome: action.usuarioNome}
         case LOGOUT:
-            return {...state, usuarioLogado: 0, usuarioEmail: null}
+            return {...state, usuarioLogado: 0, usuarioEmail: null, usuarioTipo: null, usuarioNome: null}
         default:
             return state;
     }

@@ -5,6 +5,7 @@ import {useDispatch, useSelector} from 'react-redux';
 
 function MostrarUser(){
     const dispatch = useDispatch();
+    console.log(useSelector(state => state.user))
     
     return(
         <div className="row color">
@@ -12,7 +13,7 @@ function MostrarUser(){
                 <span className="material-icons-outlined md-36 color">account_circle</span>
             </div>
             <div className="col-sm-9 color aux">
-                <p className="textoUser color">Olá {useSelector(state => state.usuarioEmail)}</p><br/>
+                <p className="textoUser color">Olá {useSelector(state => state.user.usuarioNome)}</p><br/>
                 <p className="textoUser color"><Link className="text-decoration-none text-light color">Minha Conta   </Link>    
                    |   <Link className="text-decoration-none text-light color" onClick = {()=> dispatch({type: 'LOGOUT'})}>Sair</Link></p>
             </div>

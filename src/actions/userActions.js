@@ -3,9 +3,11 @@ import 'firebase/auth';
 import {useSelector} from 'react-redux';
 
 export const LOGIN = 'LOGIN';
-const userLogin = usuarioEmail =>({
+const userLogin = (usuarioEmail,usuarioTipo,usuarioNome) =>({
     type: LOGIN,
-    usuarioEmail
+    usuarioEmail, 
+    usuarioTipo,
+    usuarioNome
 })
 
 export const LOGOUT = 'LOGOUT';
@@ -16,12 +18,18 @@ export const fazerLogin = (email, senha, dispatch) => {
         .auth()
         .signInWithEmailAndPassword(email, senha)
         .then(resultado => {
-            const action = userLogin(resultado.user.email);
-            dispatch(action)
-            
+            firebase.firestore().collection(`/usuarios`).where('email','==', resultado.user.email).get().then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                    const user = doc.data();
+                    const usuarioTipo = user.tipo;
+                    const usuarioNome = user.nome;
+                    const action = userLogin(resultado.user.email, usuarioTipo, usuarioNome);
+                    dispatch(action)
+                });
+            })  
         })
         .catch(erro => {
-            alert(erro);
+            alert("Usuario ou senha inválidos");
         })
     
 }
