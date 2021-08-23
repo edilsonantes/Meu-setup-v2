@@ -37,9 +37,16 @@ function Cadastrar(){
             return
         }
         
-        firebase.auth().createUserWithEmailAndPassword(email, senha).then(response => {
+        firebase.auth().createUserWithEmailAndPassword(email, senha).then(() => {
             setCarregando(0)
-            alert('Usuário cadastrado com sucesso');
+            firebase.firestore().collection(`/usuarios`).add({
+                nome: nome,
+                sobrenome: sobrenome,
+                email: email,
+                tipo: 1
+            }).then(() => {
+                alert('Usuário cadastrado com sucesso');
+            })
         }).catch(erro => {
             setCarregando(0)
             switch(erro.message){
