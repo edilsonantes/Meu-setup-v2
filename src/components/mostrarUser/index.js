@@ -5,7 +5,18 @@ import {useDispatch, useSelector} from 'react-redux';
 
 function MostrarUser(){
     const dispatch = useDispatch();
-    console.log(useSelector(state => state.user))
+    var link = '';
+    var label = '';
+    
+    if(useSelector(state => state.user.usuarioTipo) == 0){
+        label = 'Painel Admin'
+        link = '/paineladmin'
+    }else{
+        label = 'Minha Conta'
+        link = '/minhaconta'
+    }
+
+    console.log()
     
     return(
         <div className="row color">
@@ -14,7 +25,7 @@ function MostrarUser(){
             </div>
             <div className="col-sm-9 color aux">
                 <p className="textoUser color">Olá {useSelector(state => state.user.usuarioNome)}</p><br/>
-                <p className="textoUser color"><Link className="text-decoration-none text-light color">Minha Conta   </Link>    
+                <p className="textoUser color"><Link to={link} className="text-decoration-none text-light color">{label}   </Link>    
                    |   <Link className="text-decoration-none text-light color" onClick = {()=> dispatch({type: 'LOGOUT'})}>Sair</Link></p>
             </div>
         </div>
