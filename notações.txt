@@ -1,16 +1,3 @@
-no cadastro:
-    servidor de autenticação cria o usuario
-    depois de criado usar o UID como código pra registrar aquele usuário no banco.
-
-relação dos componentes:
-    criar uma coleção pra cada tipo de componentes
-    onde o admin vai ser capaz de gerenciar todos.
-
-no login:
-    depois do servidor de autenticação logar o usuario
-    tem que buscar o UID dele no banco pra verificar se é admin ou user
-    pra determinar quais areas da plataforma ele tem acesso.
-
 EM PARALELO AO CÓDIGO:
     1) continuar assistindo as video-aulas.
     2) ajustar as configurações e template de documentos no firestore.
@@ -21,3 +8,7 @@ PROXIMOS PASSOS NO CÓDIGO:
     1) começar a criar os reducers e actions para os componentes no banco.
     2) conferir a lógica de filtros que foi usada no mobile.
     3) começar a trabalhar no processo de um usuario criar uma configuração.
+
+
+setar o dono da configuração só na hora de salvar a config pra que eu possa buscar esse usuario dentro da 
+collection de usuarios e criar um documento dentro da collection de configs dele.
