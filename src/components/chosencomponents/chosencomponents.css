@@ -1,0 +1,12 @@
+.componenteEscolhido{
+    border: 1px solid #D1D1D1;
+    border-radius: 5px;
+}
+
+.salvar{
+    width: 70%;
+}
+
+.cancelar{
+    width: 60%;
+}
