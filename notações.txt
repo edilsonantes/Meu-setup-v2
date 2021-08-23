@@ -15,12 +15,9 @@ EM PARALELO AO CÓDIGO:
     1) continuar assistindo as video-aulas.
     2) ajustar as configurações e template de documentos no firestore.
     3) cadastrar alguns componentes diretamente no firestore para testes.
-    4)
 
 
 PROXIMOS PASSOS NO CÓDIGO:
-    1) terminar de codar as actions para os users.
-    2) começar a trabalhar no processo de cadastros dos usuários.
-    3) começar a criar os reducers e actions para os componentes no banco.
-    4) conferir a lógica de filtros que foi usada no mobile.
-    5) começar a trabalhar no processo de um usuario criar uma configuração.
+    1) começar a criar os reducers e actions para os componentes no banco.
+    2) conferir a lógica de filtros que foi usada no mobile.
+    3) começar a trabalhar no processo de um usuario criar uma configuração.
