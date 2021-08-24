@@ -24,14 +24,16 @@ function Minhasconfiguracoes(){
             
             firebase.firestore().collection(`usuarios/${id}/configs`).get().then( async (resultado) => {
                 await resultado.docs.forEach( (doc) => {
+                    console.log(doc.id);
                     listaConfigs.push({
-                        id: doc.id,
+                        id:doc.id,
                         ...doc.data()
                     })
                 })
-    
+                
                 setConfigs(listaConfigs);
             })
+            
         })
         
     });
@@ -48,7 +50,7 @@ function Minhasconfiguracoes(){
                         <div className="col-md-8 margem-top text-center">
                             <div className="row">
                                 {
-                                    configs.map(item => <MinhaConfig key={item.id} nome={item.nome} cpu={item.config.cpu.nome} gpu={item.config.gpu.nome} mb={item.config.mb.nome} pwr={item.config.pwr.nome} ram={item.config.ram.nome}/>)
+                                    configs.map(item => <MinhaConfig key={item.id} nome={item.nome} cpu={item.config.cpu.nome} gpu={item.config.gpu.nome} mb={item.config.mb.nome} pwr={item.config.pwr.nome} ram={item.config.ram.nome} id={id}/>)
                                 }
                             </div>
                         </div>

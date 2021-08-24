@@ -1,5 +1,4 @@
 import firebase from 'firebase';
-import {Redirect} from 'react-router-dom';
 
 
 export const SET_CPU = 'SET_CPU';
@@ -84,7 +83,7 @@ export const set_tipo = (tipo, dispatch) => {
     dispatch(action);
 }
 
-export const salvar_config = (email, nome, config, dispatch) => {
+export const salvar_config = (email, nome, config) => {
     const conf = {nome, config};
     var id = null;
     firebase.firestore().collection('usuarios').where('email','==', email).get().then(async (resultado) => {
@@ -112,4 +111,9 @@ export const cancelar = (dispatch) => {
     const action = Cancelar(config)
     dispatch(action)
 
+}
+
+export const deletar = (key, id) =>{
+    console.log(id);
+    console.log(key);
 }

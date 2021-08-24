@@ -1,10 +1,9 @@
 import React from 'react';
 import './minhaconfig.css';
-import { set_CPU } from '../../actions';
-import {useDispatch} from 'react-redux';
+import { deletar } from '../../actions';
 
 
-function MinhaConfig ({key, nome, cpu, gpu, mb, pwr, ram}) {
+function MinhaConfig ({key, nome, cpu, gpu, mb, pwr, ram, id}) {
     
     
     return (
@@ -17,10 +16,10 @@ function MinhaConfig ({key, nome, cpu, gpu, mb, pwr, ram}) {
             Fonte: {pwr}<br/><br/><br/>
             <div className="row mb-2">
                 <div className="col-md-6">
-                    <input type="button" value="Editar" className="btn btn-warning"/>
+                    <input type="button" value="Editar" className="btn btn-outline-warning"/>
                 </div>
                 <div className="col-md-6">
-                    <input type="button" value="Deletar" className="btn btn-danger"/>
+                    <input type="button" value="Deletar" className="btn btn-outline-danger" onClick={() => deletar(key, id)}/>
                 </div>
             </div>
         </div>
