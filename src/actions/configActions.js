@@ -1,4 +1,5 @@
 import firebase from 'firebase';
+import {Redirect} from 'react-router-dom';
 
 
 export const SET_CPU = 'SET_CPU';
@@ -88,4 +89,19 @@ export const set_tipo = (tipo, dispatch) => {
 export const set_nome = (nome, dispatch) => {
     const action = setNome(nome);
     dispatch(action);
+}
+
+export const salvar_config = (email, nome, config, dispatch) => {
+    const conf = {nome, config};
+    var id = null;
+    firebase.firestore().collection('usuarios').where('email','==', email).get().then(async (resultado) => {
+        await resultado.docs.forEach(doc => {
+            id = doc.id
+        })
+
+        firebase.firestore().collection(`usuarios/${id}/configs`).add(conf).then(
+            alert('Configuração salva')
+            
+        )
+    })
 }
