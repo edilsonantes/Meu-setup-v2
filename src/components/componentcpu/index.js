@@ -12,12 +12,12 @@ function ComponentCPU ({key, nome, soquete, modGrafico, cores, threads, pci, cac
             Núcleos: {cores}<br/>
             Threads: {threads}<br/>
             PCI Express: {pci}<br/>
-            Cache Total: {cache}<br/>
-            Boost Clock: {boost}<br/>
-            Base Clock: {base}<br/>
+            Cache Total: {cache} Mb<br/>
+            Boost Clock: {boost} GHz<br/>
+            Base Clock: {base} GHz<br/>
             Cooler: {cooler}<br/>
-            TDP: {tdp}<br/>
-            Velocidade Memória: {vel}<br/>
+            TDP: {tdp} W<br/>
+            Velocidade Memória: {vel} MHz<br/>
             Memória: {mem}<br/>
             Canais de Memoria: {canais}<br/><br/><br/>
             <input type="button" value="Selecionar" className="btn btn-outline-secondary" id="" />
