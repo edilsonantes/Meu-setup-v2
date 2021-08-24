@@ -14,10 +14,16 @@ import firebase from '../../config/firebase';
 
 
 function Setup() {
-    //console.log(useSelector(state => state.config))
+    //console.log(renderMB)
     const [components, setComponents] = useState([]);
     var listaComponents = [];
     var tipo = useSelector(state => state.config.tipoComponent);
+    var cpuSoq = useSelector(state => state.config.cpu.soq);
+    var mbVel = useSelector(state => state.config.mb.vel);
+    var gpuPWR = useSelector(state => state.config.gpu.pwr);
+    var renderMB = components.filter(components => components.soquete === cpuSoq);
+    var renderRAM = components.filter(components => components.velocidadeMemoria <= mbVel);
+    var renderPWR = components.filter(components => components.potencia >= gpuPWR);
 
     useEffect( () => {
         firebase.firestore().collection('/componentes').where('tipo', '==', tipo).get().then(async (resultado) => {
@@ -37,13 +43,13 @@ function Setup() {
             case 'cpu':
                 return components.map(item => <ComponentCPU key={item.id} nome={item.nome} soquete={item.soquete} modGrafico={item.modeloGrafico} cores={item.cores} threads={item.threads} pci={item.pciExpress} cache={item.cacheTotal} boost={item.boostClock} base={item.baseClock} cooler={item.cooler} tdp={item.TDP} vel={item.velocidadeMemoria} mem={item.memoria} canais={item.canaisMemoria}/>)
             case 'mb':
-                return components.map(item => <ComponentMB key={item.id} nome={item.nome} soquete={item.soquete} pci={item.pciExpress} vel={item.velocidadeMemoria}/>)
+                return renderMB.map(item => <ComponentMB key={item.id} nome={item.nome} soquete={item.soquete} pci={item.pciExpress} vel={item.velocidadeMemoria}/>)
             case 'ram':
-                return components.map(item => <ComponentRAM key={item.id} nome={item.nome} vel={item.velocidadeMemoria} tamanho={item.tamanho}/>)
+                return renderRAM.map(item => <ComponentRAM key={item.id} nome={item.nome} vel={item.velocidadeMemoria} tamanho={item.tamanho}/>)
             case 'gpu':
                 return components.map(item => <ComponentGPU key={item.id} nome={item.nome} fonte={item.fonte} qtdmem={item.qtdMemoria} mem={item.tipoMemoria}/>)
             case 'pwr':
-                return components.map(item => <ComponentPWR key={item.id} nome={item.nome} potencia={item.potencia}/>)
+                return renderPWR.map(item => <ComponentPWR key={item.id} nome={item.nome} potencia={item.potencia}/>)
             
         }
     }
