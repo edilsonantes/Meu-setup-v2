@@ -33,6 +33,12 @@ const setPWR = (PWR) => ({
     data: PWR
 })
 
+export const SET_TIPO = 'SET_TIPO';
+const setTipo = (tipo) => ({
+    type: SET_TIPO,
+    data: tipo
+})
+
 
 
 
@@ -63,5 +69,11 @@ export const set_GPU = (GPU,pwr,dispatch) => {
 export const set_PWR = (PWR,pot,dispatch) =>{
     const fonte = {PWR,pot};
     const action = setPWR(fonte);
+    dispatch(action);
+}
+
+
+export const set_tipo = (tipo, dispatch) => {
+    const action = setTipo(tipo);
     dispatch(action);
 }
