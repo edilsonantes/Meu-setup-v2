@@ -14,7 +14,7 @@ import firebase from '../../config/firebase';
 
 
 function Setup() {
-    
+    //console.log(useSelector(state => state.config))
     const [components, setComponents] = useState([]);
     var listaComponents = [];
     var tipo = useSelector(state => state.config.tipoComponent);
@@ -44,8 +44,7 @@ function Setup() {
                 return components.map(item => <ComponentGPU key={item.id} nome={item.nome} fonte={item.fonte} qtdmem={item.qtdMemoria} mem={item.tipoMemoria}/>)
             case 'pwr':
                 return components.map(item => <ComponentPWR key={item.id} nome={item.nome} potencia={item.potencia}/>)
-            default:
-                return alert('Erro inesperado')
+            
         }
     }
     

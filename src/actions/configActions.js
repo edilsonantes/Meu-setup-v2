@@ -42,32 +42,32 @@ const setTipo = (tipo) => ({
 
 
 
-export const set_CPU = (CPU,soq,dispatch) => {
-    const proc = {CPU,soq}
+export const set_CPU = (nome,soq,dispatch) => {
+    const proc = {nome,soq};
     const action = setCPU(proc);
     dispatch(action);
 }
 
-export const set_MB = (MB,soq,vel,dispatch) => {
-    const placa = {MB,soq,vel}
+export const set_MB = (nome,soq,vel,dispatch) => {
+    const placa = {nome,soq,vel}
     const action = setMB(placa);
     dispatch(action);
 }
 
-export const set_RAM = (RAM,vel,dispatch) => {
-    const memoria = {RAM,vel}
+export const set_RAM = (nome,vel,dispatch) => {
+    const memoria = {nome,vel}
     const action = setRAM(memoria);
     dispatch(action);
 }
 
-export const set_GPU = (GPU,pwr,dispatch) => {
-    const placa = {GPU,pwr};
+export const set_GPU = (nome,pwr,dispatch) => {
+    const placa = {nome,pwr};
     const action = setGPU(placa);
     dispatch(action);
 }
 
-export const set_PWR = (PWR,pot,dispatch) =>{
-    const fonte = {PWR,pot};
+export const set_PWR = (nome,pot,dispatch) =>{
+    const fonte = {nome,pot};
     const action = setPWR(fonte);
     dispatch(action);
 }

@@ -1,8 +1,7 @@
-import {useSelector} from 'react-redux';
 import { SET_CPU, SET_GPU, SET_MB, SET_PWR, SET_RAM, SET_TIPO } from "../actions";
 
 const INITIAL_STATE = {
-    tipoComponent: 'cpu',
+    tipoComponent: 'mb',
     cpu: {nome: 'Processador', soq: null},
     mb: {nome: 'Placa-mãe', soq: null, vel: null},
     ram: {nome: 'Memória ram', vel: null},
@@ -13,11 +12,9 @@ const INITIAL_STATE = {
 
 
 function configReducer(state = INITIAL_STATE, action){
-    //console.log(state);
-    
-    switch (action){
+    switch (action.type){
         case SET_CPU:
-            state.cpu = action.data;
+            state.cpu = action.data
             if (state.cpu.soq != state.mb.soq){
                 state.mb.nome = 'Placa-mãe';
                 state.mb.vel = null;
@@ -45,7 +42,7 @@ function configReducer(state = INITIAL_STATE, action){
             state.pwr = action.data;
             return state;
         case SET_TIPO:
-            state.tipo = action.data;
+            state.tipoComponent = action.data;
             return state;
         default:
             return state;

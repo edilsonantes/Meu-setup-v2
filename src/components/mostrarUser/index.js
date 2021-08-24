@@ -15,8 +15,6 @@ function MostrarUser(){
         label = 'Minha Conta'
         link = '/minhaconta'
     }
-
-    console.log()
     
     return(
         <div className="row color">
