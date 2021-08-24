@@ -1,9 +1,9 @@
 import React, {useState,useEffect} from 'react';
-import './componentcard.css';
+import './componentcpu.css';
 import {Link} from 'react-router-dom';
 
 
-function ComponentCard ({key, nome, soquete, modGrafico, cores, threads, pci, cache, boost, base, cooler, tdp, vel, mem, canais}) {
+function ComponentCPU ({key, nome, soquete, modGrafico, cores, threads, pci, cache, boost, base, cooler, tdp, vel, mem, canais}) {
     return (
         <div className="col-md-4 col-sm-6 mb-3 mt-3">
             <h5 id="5">{nome}</h5><br/>
@@ -25,4 +25,4 @@ function ComponentCard ({key, nome, soquete, modGrafico, cores, threads, pci, ca
     )
 }
 
-export default ComponentCard;
+export default ComponentCPU;

@@ -3,7 +3,7 @@ import './setup.css';
 import NavbarTop from '../../components/navbarTop';
 import NavbarMenu from '../../components/navbarMenu';
 import Footer from '../../components/footer';
-import ComponentCard from '../../components/componentcard';
+import ComponentCPU from '../../components/componentcpu';
 import ChosenComponents from '../../components/chosencomponents';
 import {useSelector} from 'react-redux';
 import firebase from '../../config/firebase';
@@ -27,6 +27,19 @@ function Setup() {
             setComponents(listaComponents);
         })
     });
+
+    function mudarCard(tipo){
+        switch(tipo){
+            case 'cpu':
+                return components.map(item => <ComponentCPU key={item.id} nome={item.nome} soquete={item.soquete} modGrafico={item.modeloGrafico} cores={item.cores} threads={item.threads} pci={item.pciExpress} cache={item.cacheTotal} boost={item.boostClock} base={item.baseClock} cooler={item.cooler} tdp={item.TDP} vel={item.velocidadeMemoria} mem={item.memoria} canais={item.canaisMemoria}/>)
+            case 'mb':
+            case 'ram':
+            case 'gpu':
+            case 'pwr':
+            default:
+                return alert('Erro inesperado')
+        }
+    }
     
     
     
@@ -43,7 +56,7 @@ function Setup() {
                             <div id="renderComponentes" className="col-md-8 col-sm-6">
                                 <div className="row">                            
                                     {
-                                        components.map(item => <ComponentCard key={item.id} nome={item.nome} soquete={item.soquete} modGrafico={item.modeloGrafico} cores={item.cores} threads={item.threads} pci={item.pciExpress} cache={item.cacheTotal} boost={item.boostClock} base={item.baseClock} cooler={item.cooler} tdp={item.TDP} vel={item.velocidadeMemoria} mem={item.memoria} canais={item.canaisMemoria}/>)
+                                        mudarCard(tipo)
                                     }   
                                 </div>
                             </div>
