@@ -14,7 +14,7 @@ import firebase from '../../config/firebase';
 
 
 function Setup() {
-    //console.log(renderMB)
+    const [pesquisa, setPesquisa] = useState('');
     const [components, setComponents] = useState([]);
     var listaComponents = [];
     var tipo = useSelector(state => state.config.tipoComponent);
@@ -28,10 +28,12 @@ function Setup() {
     useEffect( () => {
         firebase.firestore().collection('/componentes').where('tipo', '==', tipo).get().then(async (resultado) => {
             await resultado.docs.forEach(doc => {
-                listaComponents.push({
-                    id: doc.id,
-                    ...doc.data()
-                })
+                if (doc.data().nome.indexOf(pesquisa) >= 0){
+                    listaComponents.push({
+                        id: doc.id,
+                        ...doc.data()
+                    })
+                }
             })
 
             setComponents(listaComponents);
@@ -65,8 +67,13 @@ function Setup() {
             <div className="container mt-3">
                 <div className="row justify-content-center">
                     <div id="conteudo" className="col-md-12 text-center">
+                        
+                        
                         <div className="row justify-content-center">
                             <div id="renderComponentes" className="col-md-8 col-sm-6">
+                                <div className="row p-2 mt-4">
+                                    <input onChange={(e) => setPesquisa(e.target.value)}type="text" className="form-control campo text-center" placeholder="Pesquisar componentes"/>
+                                </div>
                                 <div className="row">                            
                                     {
                                         mudarCard(tipo)

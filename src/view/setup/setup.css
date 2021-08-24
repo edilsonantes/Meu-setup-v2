@@ -1,0 +1,15 @@
+.campo{
+    border: 1px solid #fff;
+    border-radius: 5px;
+    background-color: transparent;
+    color: #fff;
+    width: 100%;
+}
+.campo:focus{
+    border: 1px solid #fff;
+    border-radius: 5px;
+    background-color: transparent;
+    color: #fff;
+    width: 100%;
+    outline: 0;
+}

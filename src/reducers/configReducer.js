@@ -1,7 +1,7 @@
-import { SET_CPU, SET_GPU, SET_MB, SET_PWR, SET_RAM, SET_TIPO, SET_NOME } from "../actions";
+import { SET_CPU, SET_GPU, SET_MB, SET_PWR, SET_RAM, SET_TIPO, CANCELAR } from "../actions";
 
 const INITIAL_STATE = {
-    tipoComponent: 'mb',
+    tipoComponent: 'cpu',
     cpu: {nome: 'Processador', soq: null},
     mb: {nome: 'Placa-mãe', soq: null, vel: null},
     ram: {nome: 'Memória ram', vel: null},
@@ -44,8 +44,8 @@ function configReducer(state = INITIAL_STATE, action){
         case SET_TIPO:
             state.tipoComponent = action.data;
             return state;
-        case SET_NOME:
-            state.nome = action.data;
+        case CANCELAR:
+            state = action.data;
             return state;
         default:
             return state;

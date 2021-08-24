@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import './chosencomponents.css';
 import {Link} from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import {set_tipo, salvar_config} from '../../actions';
+import {set_tipo, salvar_config, cancelar} from '../../actions';
 
 function ChosenComponents(){
 
@@ -36,7 +36,7 @@ function ChosenComponents(){
                 <input type="button" value="Salvar" className="btn btn-warning salvar" onClick={() => salvar_config(email, nome, config, dispatch)}/>
             </div>
             <div className="row my-2 justify-content-center">
-                <input type="button" value="Cancelar" className="btn btn-outline-secondary cancelar" id="cancelar"/>
+                <input type="button" value="Cancelar" className="btn btn-outline-secondary cancelar" onClick={() => cancelar(dispatch)}/>
             </div>
 
         </div>

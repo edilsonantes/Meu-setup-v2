@@ -40,13 +40,11 @@ const setTipo = (tipo) => ({
     data: tipo
 })
 
-
-export const SET_NOME = 'SET_NOME';
-const setNome = (nome) => ({
-    type: SET_NOME,
-    data: nome
+export const CANCELAR = 'CANCELAR';
+const Cancelar = (config) => ({
+    type: CANCELAR,
+    data: config
 })
-
 
 
 
@@ -86,11 +84,6 @@ export const set_tipo = (tipo, dispatch) => {
     dispatch(action);
 }
 
-export const set_nome = (nome, dispatch) => {
-    const action = setNome(nome);
-    dispatch(action);
-}
-
 export const salvar_config = (email, nome, config, dispatch) => {
     const conf = {nome, config};
     var id = null;
@@ -98,10 +91,25 @@ export const salvar_config = (email, nome, config, dispatch) => {
         await resultado.docs.forEach(doc => {
             id = doc.id
         })
-
-        firebase.firestore().collection(`usuarios/${id}/configs`).add(conf).then(
-            alert('Configuração salva')
-            
-        )
+        if(id != null){
+            firebase.firestore().collection(`usuarios/${id}/configs`).add(conf).then(
+                alert('Configuração salva')
+                
+            )
+        }else{
+            alert('Por favor cadastre-se ou realize o login para salvar seu Setup')
+        }
     })
+}
+
+export const cancelar = (dispatch) => {
+    const config = {tipoComponent: 'cpu',
+        cpu: {nome: 'Processador', soq: null},
+        mb: {nome: 'Placa-mãe', soq: null, vel: null},
+        ram: {nome: 'Memória ram', vel: null},
+        gpu: {nome: 'Placa de Vídeo', pwr: null},
+        pwr: {nome: 'Fonte', pot: null}}
+    const action = Cancelar(config)
+    dispatch(action)
+
 }
