@@ -22,7 +22,7 @@ function Setup() {
     var mbVel = useSelector(state => state.config.mb.vel);
     var gpuPWR = useSelector(state => state.config.gpu.pwr);
     var renderMB = components.filter(components => components.soquete === cpuSoq);
-    var renderRAM = components.filter(components => components.velocidadeMemoria <= mbVel);
+    var renderRAM = components.filter(components => components.velocidadeMemoria >= mbVel);
     var renderPWR = components.filter(components => components.potencia >= gpuPWR);
 
     useEffect( () => {

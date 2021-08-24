@@ -1,13 +1,41 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './minhasconfiguracoes.css';
 import firebase from '../../config/firebase';
 import 'firebase/auth';
 import {Link} from 'react-router-dom';
 import NavbarTop from '../../components/navbarTop';
 import SideMenu from '../../components/sidemenu';
-import Footer from '../../components/footer';
+import MinhaConfig from '../../components/minhaconfig';
+import {useSelector} from 'react-redux';
+
 
 function Minhasconfiguracoes(){
+    
+    var email = useSelector(state => state.user.usuarioEmail);
+    var id = null;
+    const [configs, setConfigs] = useState([]);
+    var listaConfigs = [];
+    
+    useEffect( () => {
+        firebase.firestore().collection('usuarios').where('email', '==', email).get().then( async (resultado) => {
+            await resultado.docs.forEach( (doc) => {
+                id = doc.id;
+            })
+            
+            firebase.firestore().collection(`usuarios/${id}/configs`).get().then( async (resultado) => {
+                await resultado.docs.forEach( (doc) => {
+                    listaConfigs.push({
+                        id: doc.id,
+                        ...doc.data()
+                    })
+                })
+    
+                setConfigs(listaConfigs);
+            })
+        })
+        
+    });
+    
     return (
         <>
             <NavbarTop />
@@ -18,7 +46,11 @@ function Minhasconfiguracoes(){
                             <SideMenu />
                         </div>
                         <div className="col-md-8 margem-top text-center">
-                            <h4>configs</h4>
+                            <div className="row">
+                                {
+                                    configs.map(item => <MinhaConfig key={item.id} nome={item.nome} cpu={item.config.cpu.nome} gpu={item.config.gpu.nome} mb={item.config.mb.nome} pwr={item.config.pwr.nome} ram={item.config.ram.nome}/>)
+                                }
+                            </div>
                         </div>
                     </div>
                 </div>
