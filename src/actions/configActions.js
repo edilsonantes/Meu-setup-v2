@@ -40,6 +40,13 @@ const setTipo = (tipo) => ({
 })
 
 
+export const SET_NOME = 'SET_NOME';
+const setNome = (nome) => ({
+    type: SET_NOME,
+    data: nome
+})
+
+
 
 
 export const set_CPU = (nome,soq,dispatch) => {
@@ -75,5 +82,10 @@ export const set_PWR = (nome,pot,dispatch) =>{
 
 export const set_tipo = (tipo, dispatch) => {
     const action = setTipo(tipo);
+    dispatch(action);
+}
+
+export const set_nome = (nome, dispatch) => {
+    const action = setNome(nome);
     dispatch(action);
 }
